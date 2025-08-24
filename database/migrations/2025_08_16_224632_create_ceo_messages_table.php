@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('qualifications_summary')->nullable();
             $table->string('position')->nullable();
             $table->text('sister_concern_text')->nullable();
+            $table->string('image')->nullable(); // public storage path (e.g. ceo_messages/abc.jpg)
             $table->longText('message_content')->nullable();
             $table->timestamps();
         });

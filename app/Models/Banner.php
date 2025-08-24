@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Hero extends Model
+class Banner extends Model
 {
     //
-    
+    protected $fillable = ['image'];
 }

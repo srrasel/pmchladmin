@@ -13,6 +13,7 @@ class CeoMessage extends Model
         'name',
         'qualifications_summary',
         'position',
+        'image',
         'sister_concern_text',
         'message_content',
     ];

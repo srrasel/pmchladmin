@@ -155,8 +155,55 @@ Route::get('/api/ceo-messages', function () {
             "Position" => $message->position,
             "SisterConcernText" => $message->sister_concern_text,
             "MessageContent" => $message->message_content,
+            "Image" => $message->image ? asset('storage/' . $message->image) : null,
             "createdAt" => $message->created_at?->toISOString(),
             "updatedAt" => $message->updated_at?->toISOString(),
+        ];
+    });
+});
+Route::get('/api/topHeader', function () {
+    return \App\Models\TopHeader::all()->map(function ($topHeader) {
+        return [
+            "id" => $topHeader->id,
+            "Emergency" => $topHeader->emergency_number,
+            "Hotline" => $topHeader->hotline_number,
+            "createdAt" => $topHeader->created_at?->toISOString(),
+            "updatedAt" => $topHeader->updated_at?->toISOString(),
+        ];
+    });
+});
+
+Route::get('/api/banners', function () {
+    return \App\Models\Banner::all()->map(function ($banner) {
+        return [
+            "id" => $banner->id,
+            "Image" => $banner->image ? asset('storage/' . $banner->image) : null,
+            "createdAt" => $banner->created_at?->toISOString(),
+            "updatedAt" => $banner->updated_at?->toISOString(),
+        ];
+    });
+});
+Route::get('/api/popups', function () {
+    return \App\Models\Popup::all()->map(function ($popup) {
+        return [
+            "id" => $popup->id,
+            "Image" => $popup->image ? asset('storage/' . $popup->image) : null,
+            "Link" => $popup->link,
+            "createdAt" => $popup->created_at?->toISOString(),
+            "updatedAt" => $popup->updated_at?->toISOString(),
+        ];
+    });
+});
+Route::get('/api/specialities', function () {
+    return \App\Models\Speciality::all()->map(function ($speciality) {
+        return [
+            "id" => $speciality->id,
+            "Name" => $speciality->name,
+            "ShortDescription" => $speciality->shortdescription,
+            "Category" => $speciality->category,
+            "Image" => $speciality->image ? asset('storage/' . $speciality->image) : null,
+            "createdAt" => $speciality->created_at?->toISOString(),
+            "updatedAt" => $speciality->updated_at?->toISOString(),
         ];
     });
 });

@@ -4,7 +4,9 @@ namespace App\Filament\Resources\CeoMessages\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
+
 use Filament\Schemas\Schema;
 
 class CeoMessageForm
@@ -20,6 +22,10 @@ class CeoMessageForm
                 Textarea::make('qualifications_summary')
                     ->default(null),
                 Textarea::make('sister_concern_text')
+                    ->default(null),
+                FileUpload::make('image')
+                    ->image()
+                    ->columnSpanFull()
                     ->default(null),
                 RichEditor::make('message_content')
                     ->default(null)
