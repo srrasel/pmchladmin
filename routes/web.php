@@ -11,6 +11,9 @@ use App\Models\HealthPackage;
 use App\Models\Gallery;
 use App\Models\Client;
 use App\Models\CeoMessage;
+use App\Models\TopHeader;
+use App\Models\Speciality;
+use App\Models\Disease;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -204,6 +207,18 @@ Route::get('/api/specialities', function () {
             "Image" => $speciality->image ? asset('storage/' . $speciality->image) : null,
             "createdAt" => $speciality->created_at?->toISOString(),
             "updatedAt" => $speciality->updated_at?->toISOString(),
+        ];
+    });
+});
+Route::get('/api/diseases', function () {
+    return \App\Models\Disease::all()->map(function ($disease) {
+        return [
+            "id" => $disease->id,
+            "Name" => $disease->title,
+            "Description" => $disease->description,
+            "Image" => $disease->image ? asset('storage/' . $disease->image) : null,
+            "createdAt" => $disease->created_at?->toISOString(),
+            "updatedAt" => $disease->updated_at?->toISOString(),
         ];
     });
 });
