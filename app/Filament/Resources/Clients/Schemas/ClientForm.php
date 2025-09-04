@@ -15,7 +15,11 @@ class ClientForm
                 TextInput::make('title')
                     ->required(),
                 FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
+                    ->required(),
             ]);
     }
 }

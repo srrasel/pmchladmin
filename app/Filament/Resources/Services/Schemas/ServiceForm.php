@@ -23,7 +23,10 @@ class ServiceForm
                 
                 Forms\Components\FileUpload::make('image')
                     ->directory('services')
-                    ->image(), // to upload images
+                    ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->visibility('public')
+                    ->required() , // to upload images
 
                 Forms\Components\RichEditor::make('description')
                     ->columnSpanFull()

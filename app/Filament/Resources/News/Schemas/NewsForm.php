@@ -19,7 +19,11 @@ class NewsForm
                 TextInput::make('category')
                     ->default(null),
                 FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
+                    ->required(),
                 TextInput::make('author')
                     ->default(null),
                 RichEditor::make('description')

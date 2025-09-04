@@ -16,10 +16,17 @@ class GalleryForm
                     ->required(),
 
                 FileUpload::make('featured_image')
-                    ->image(),
+                    ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
+                    ->required(),
 
                 FileUpload::make('gallery_images')   // ✅ multiple images
                     ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
                     ->multiple()                     // allows multiple uploads
                     ->columnSpanFull(),
             ]);

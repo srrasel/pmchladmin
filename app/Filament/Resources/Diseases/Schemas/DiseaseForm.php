@@ -18,6 +18,10 @@ class DiseaseForm
                      ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
+                    ->required()
                     ->columnSpanFull(),
                 RichEditor::make('description')
                     ->default(null)

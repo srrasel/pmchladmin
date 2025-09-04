@@ -25,6 +25,9 @@ class CeoMessageForm
                     ->default(null),
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public') // make sure it points to storage/app/public
+                    ->directory('images') // optional folder
+                    ->visibility('public')
                     ->columnSpanFull()
                     ->default(null),
                 RichEditor::make('message_content')
