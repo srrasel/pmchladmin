@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\ResearchPublications\Schemas;
 
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -16,11 +17,13 @@ class ResearchPublicationForm
                 TextInput::make('title')
                     ->label('Title')
                     ->required()
+                     ->columnSpanFull()
                     ->maxLength(255),
-
-                Textarea::make('content')
-                    ->label('Text Content')
-                    ->required(),
+                  // Bio WYSIWYG with min-height 350px
+                RichEditor::make('content')
+                    ->default(null)
+                    ->columnSpanFull()
+                    ->extraAttributes(['style' => 'min-height:350px;']),
 
                 FileUpload::make('image')
                     ->label('Image')
