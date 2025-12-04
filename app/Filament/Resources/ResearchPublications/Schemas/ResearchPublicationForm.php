@@ -5,6 +5,7 @@ namespace App\Filament\Resources\ResearchPublications\Schemas;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Schema;
 
 class ResearchPublicationForm
 {
