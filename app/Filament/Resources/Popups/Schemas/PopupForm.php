@@ -1,25 +1,36 @@
 <?php
 
-namespace App\Filament\Resources\Popups\Schemas;
+namespace App\Filament\Resources\ResearchPublications\Schemas;
 
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
 
-class PopupForm
+class ResearchPublicationForm
 {
     public static function configure(Schema $schema): Schema
     {
         return $schema
             ->components([
-                FileUpload::make('image')
-                    ->image()
-                    ->disk('public') // make sure it points to storage/app/public
-                    ->directory('images') // optional folder
-                    ->visibility('public')
+                TextInput::make('title')
+                    ->label('Title')
+                    ->required()
+                    ->maxLength(255),
+
+                Textarea::make('content')
+                    ->label('Text Content')
                     ->required(),
-                TextInput::make('link')
-                    ->default(null),
+
+                FileUpload::make('image')
+                    ->label('Image')
+                    ->image()
+                    ->directory('research-images'),
+
+                FileUpload::make('pdf')
+                    ->label('PDF File')
+                    ->directory('research-pdfs')
+                    ->pdf(),
             ]);
     }
 }
