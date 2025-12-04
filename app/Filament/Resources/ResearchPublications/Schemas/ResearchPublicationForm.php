@@ -30,7 +30,7 @@ class ResearchPublicationForm
                 FileUpload::make('pdf')
                     ->label('PDF File')
                     ->directory('research-pdfs')
-                    ->mimes(['pdf']), // <- allow only PDF files
+                    ->acceptedFileTypes(['application/pdf']), // <- fixed
             ]);
     }
 }
