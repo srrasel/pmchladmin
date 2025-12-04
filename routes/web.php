@@ -236,7 +236,8 @@ Route::get('/api/research-publications', function () {
         ];
     });
 });
-// Get single publication
+
+
 Route::get('/research-publications/{id}', function ($id) {
     $pub = ResearchPublication::findOrFail($id);
     return [
