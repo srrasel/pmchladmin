@@ -7,4 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ResearchPublication extends Model
 {
     //
+     protected $fillable = [
+        'title',
+        'content',
+        'image',
+        'pdf',
+    ];
 }

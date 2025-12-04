@@ -14,6 +14,7 @@ use App\Models\CeoMessage;
 use App\Models\TopHeader;
 use App\Models\Speciality;
 use App\Models\Disease;
+use App\Models\ResearchPublication;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -221,4 +222,30 @@ Route::get('/api/diseases', function () {
             "updatedAt" => $disease->updated_at?->toISOString(),
         ];
     });
+});
+Route::get('/api/research-publications', function () {
+    return ResearchPublication::all()->map(function ($pub) {
+        return [
+            'id' => $pub->id,
+            'title' => $pub->title,
+            'content' => $pub->content,
+            'image' => $pub->image ? asset('storage/' . $pub->image) : null,
+            'pdf' => $pub->pdf ? asset('storage/' . $pub->pdf) : null,
+            'createdAt' => $pub->created_at?->toISOString(),
+            'updatedAt' => $pub->updated_at?->toISOString(),
+        ];
+    });
+});
+// Get single publication
+Route::get('/research-publications/{id}', function ($id) {
+    $pub = ResearchPublication::findOrFail($id);
+    return [
+        'id' => $pub->id,
+        'title' => $pub->title,
+        'content' => $pub->content,
+        'image' => $pub->image ? asset('storage/' . $pub->image) : null,
+        'pdf' => $pub->pdf ? asset('storage/' . $pub->pdf) : null,
+        'createdAt' => $pub->created_at?->toISOString(),
+        'updatedAt' => $pub->updated_at?->toISOString(),
+    ];
 });
