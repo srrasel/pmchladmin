@@ -2,7 +2,9 @@
 
 namespace App\Filament\Resources\ResearchPublications\Schemas;
 
-use Filament\Schemas\Schema;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\TextInput;
 
 class ResearchPublicationForm
 {
@@ -10,7 +12,6 @@ class ResearchPublicationForm
     {
         return $schema
             ->components([
-                //
                 TextInput::make('title')
                     ->label('Title')
                     ->required()
@@ -28,7 +29,7 @@ class ResearchPublicationForm
                 FileUpload::make('pdf')
                     ->label('PDF File')
                     ->directory('research-pdfs')
-                    ->pdf(),
+                    ->mimes(['pdf']), // <- allow only PDF files
             ]);
     }
 }
