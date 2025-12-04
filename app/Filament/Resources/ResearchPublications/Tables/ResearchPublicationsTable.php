@@ -2,14 +2,11 @@
 
 namespace App\Filament\Resources\ResearchPublications\Tables;
 
-use Filament\Tables\Table;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\IconColumn;
-use Filament\Tables\Actions\ViewAction;
-use Filament\Tables\Actions\EditAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\ViewAction;
+use Filament\Tables\Table;
 
 class ResearchPublicationsTable
 {
@@ -17,7 +14,8 @@ class ResearchPublicationsTable
     {
         return $table
             ->columns([
-                TextColumn::make('title')
+                //
+                 TextColumn::make('title')
                     ->label('Title')
                     ->sortable()
                     ->searchable(),
@@ -42,7 +40,7 @@ class ResearchPublicationsTable
                     ->dateTime('M d, Y H:i'),
             ])
             ->filters([
-                // you can add filters here if needed
+                //
             ])
             ->recordActions([
                 ViewAction::make(),
@@ -55,3 +53,4 @@ class ResearchPublicationsTable
             ]);
     }
 }
+
