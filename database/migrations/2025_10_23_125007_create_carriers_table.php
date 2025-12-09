@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jobs', function (Blueprint $table) {
+        Schema::create('carriers', function (Blueprint $table) {
         $table->id();
         $table->string('title');
         $table->text('description');
@@ -19,6 +19,7 @@ return new class extends Migration
         $table->string('company')->nullable();
         $table->string('type')->nullable(); // full-time, part-time
         $table->decimal('salary', 10, 2)->nullable();
+        $table->string('image')->nullable();
         $table->timestamps();
         });
     }

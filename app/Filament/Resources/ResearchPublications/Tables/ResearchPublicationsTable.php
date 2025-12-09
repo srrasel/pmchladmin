@@ -38,10 +38,7 @@ class ResearchPublicationsTable
                 TextColumn::make('pdf')
                     ->label('PDF')
                     ->formatStateUsing(fn($state) => $state ? 'Available' : 'Not uploaded'),
-
-                TextColumn::make('created_at')
-                    ->label('Created')
-                    ->dateTime('M d, Y H:i'),
+                    
             ])
             ->filters([
                 //

@@ -5,6 +5,9 @@ use App\Models\Doctor;
 use App\Models\Service;
 use App\Models\Department;
 use App\Models\News;
+use App\Models\Banner;
+use App\Models\Popup;
+use App\Models\Carrier;
 use App\Models\Video;
 use App\Models\SuccessStory;
 use App\Models\HealthPackage;
@@ -249,4 +252,19 @@ Route::get('/research-publications/{id}', function ($id) {
         'createdAt' => $pub->created_at?->toISOString(),
         'updatedAt' => $pub->updated_at?->toISOString(),
     ];
+});
+
+Route::get('/api/carrier-jobs', function () {
+    return Carrier::all()->map(function ($job) {
+        return [
+            "id" => $job->id,
+            "Title" => $job->title,
+            "Location" => $job->location,
+            "Description" => $job->description,
+            "Salary" => $job->salary,
+            "Image" => $job->image ? asset('storage/' . $job->image) : null,
+            "createdAt" => $job->created_at?->toISOString(),
+            "updatedAt" => $job->updated_at?->toISOString(),
+        ];
+    });
 });
