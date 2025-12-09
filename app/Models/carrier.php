@@ -18,6 +18,5 @@ class Carrier extends Model
         'salary',
         'image',
     ];
-
 }
 
