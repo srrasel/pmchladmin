@@ -20,3 +20,4 @@ class Carrier extends Model
     ];
 
 }
+

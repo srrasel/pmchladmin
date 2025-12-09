@@ -38,7 +38,6 @@ class ResearchPublicationsTable
                 TextColumn::make('pdf')
                     ->label('PDF')
                     ->formatStateUsing(fn($state) => $state ? 'Available' : 'Not uploaded'),
-                    
             ])
             ->filters([
                 //
