@@ -33,7 +33,8 @@ class ResearchPublicationForm
                 FileUpload::make('pdf')
                     ->label('PDF File')
                     ->directory('research-pdfs')
-                    ->acceptedFileTypes(['application/pdf']), // <- fixed
+                    ->acceptedFileTypes(['application/pdf']) // <- fixed
+                    ->maxSize(102400),// 100MB (KB)
             ]);
     }
 }
